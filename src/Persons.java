@@ -5,11 +5,26 @@ public class Persons {
 	private ArrayList<String> names;
 	private ArrayList<ArrayList<String>> numbers;
 	private ArrayList<Date> birthdays;
-	
+
 	public Persons() {
 		names = new ArrayList<String>();
 		numbers = new ArrayList<ArrayList<String>>();
 		birthdays = new ArrayList<Date>();
+	}
+	public Persons(String name, String number) {
+		names = new ArrayList<String>(); names.add(name);
+		numbers = new ArrayList<ArrayList<String>>();
+		ArrayList<String> list = new ArrayList<String>();
+		list.add(number); numbers.add(list);
+		birthdays = new ArrayList<Date>(); birthdays.add(null);
+	}
+	public Persons(String name, String number, Date birthday) {
+		names = new ArrayList<String>();
+		numbers = new ArrayList<ArrayList<String>>();
+		birthdays = new ArrayList<Date>(); birthdays.add(null);
+		names.add(name); birthdays.add(birthday);
+		ArrayList<String> list = new ArrayList<String>();
+		list.add(number); numbers.add(list);
 	}
 
 	public void addPerson(String name, String number, Date birthday) {
@@ -73,6 +88,9 @@ public class Persons {
 		birthdays.remove(getNamesIndex(name));
 		numbers.remove(getNamesIndex(name));
 		names.remove(getNamesIndex(name));
+	}
+	public void removeNumber(String name, int position) {
+		getNamesNumbers(name).remove(position);
 	}
 
 	public String toString() {

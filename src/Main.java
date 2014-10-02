@@ -6,12 +6,11 @@ public class Main {
 	public static Scanner scan;
 
 	public static void main(String[] args) {
-		contact = new Persons();
+		contact = new Persons("Hi", "654689", new Date(11,  7, 1996));
 		contact.addPerson("Fanis", "79503264385", new Date(11,  7, 1996));
 		contact.addPerson("Lenar", "79503264388", new Date(10,  6, 1995));
 		contact.addPerson("Danis", "79503264389");
 		contact.addNamesNumber("Fanis", "79503264386");
-		
 		scan = new Scanner(System.in);
 		while (true) {
 			menuCUI();
@@ -84,9 +83,9 @@ public class Main {
 					System.out.println("Person " + name + "has:");
 					for (int i = 0; i < contact.getSizeNamesNumbers(name); i++)
 						System.out.print(i + ". " + contact.getNumberOf(name, i) + "\n");
-					System.out.println("What Number would you like to change? ");
+					System.out.println("What Number would you like to delete? ");
 					int position = scan.nextInt();
-					contact.getNamesNumbers(name).remove(position);
+					contact.removeNumber(name, position);
 				}
 			}
 		}
