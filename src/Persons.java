@@ -21,7 +21,7 @@ public class Persons {
 	public Persons(String name, String number, Date birthday) {
 		names = new ArrayList<String>();
 		numbers = new ArrayList<ArrayList<String>>();
-		birthdays = new ArrayList<Date>(); birthdays.add(null);
+		birthdays = new ArrayList<Date>();
 		names.add(name); birthdays.add(birthday);
 		ArrayList<String> list = new ArrayList<String>();
 		list.add(number); numbers.add(list);
@@ -32,9 +32,9 @@ public class Persons {
 			if(getNameAt(i) == name) {
 				addNamesNumber(name, number); return;
 			}
-		names.add(name); birthdays.add(birthday);
-		ArrayList<String> list = new ArrayList<String>();
-		list.add(number); numbers.add(list);
+			names.add(name); birthdays.add(birthday);
+			ArrayList<String> list = new ArrayList<String>();
+			list.add(number); numbers.add(list);
 	}
 	public void addPerson(String name, String number) {
 		for (int i = 0; i < getSize(); i++)
@@ -97,7 +97,7 @@ public class Persons {
 		String temp = new String("********");
 		for (int i = 0; i < getSize(); i++) {
 			temp += "\nName: " + getNameAt(i); temp += "\tBirthday: ";
-			temp += getNamesBirthday(getNameAt(i)); temp += "\n";
+			temp += birthdays.get(i); temp += "\n";
 			temp += "Numbers: ";
 			for (int j = new Integer(0); j < getSizeNamesNumbers(getNameAt(i)); j++) {
 				temp += getNumberOf(getNameAt(i), j);

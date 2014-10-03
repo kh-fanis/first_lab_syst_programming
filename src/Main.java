@@ -6,8 +6,8 @@ public class Main {
 	public static Scanner scan;
 
 	public static void main(String[] args) {
-		contact = new Persons("Hi", "654689", new Date(11,  7, 1996));
-		contact.addPerson("Fanis", "79503264385", new Date(11,  7, 1996));
+		contact = new Persons("Hi", "654689", new Date(1,  7, 1996));
+		contact.addPerson("Fanis", "79503264385", new Date(2,  7, 1996));
 		contact.addPerson("Lenar", "79503264388", new Date(10,  6, 1995));
 		contact.addPerson("Danis", "79503264389");
 		contact.addNamesNumber("Fanis", "79503264386");
@@ -31,16 +31,17 @@ public class Main {
 	public static void processEvent(int input) {
 		if (input == 1) System.out.println(contact);
 		else if (input == 2) {
-			String name, number; int day, month, year;
+			String name, number, month; int day, year;
 			System.out.println("Enter Name: "); name = scan.next();
 			System.out.println("Enter Number: "); number = scan.next();
 			System.out.println("Enter Birthday's day: "); day = scan.nextInt();
-			System.out.println("Enter Birthday's month: "); month = scan.nextInt();
-			System.out.println("Enter Birthday's year: "); year = scan.nextInt();
-			contact.addPerson(name, number, new Date(day, month, year));
+			System.out.println("Enter Birthday's month: "); month = scan.next();
+			System.out.println("Enter Birthday's year: ");year = scan.nextInt();
+			contact.addPerson(name, number, new Date(day,  month, year));
 		}
 		else if (input == 3) {
-			System.out.println("Who would you like to change?"); String name = scan.next(); 
+			System.out.println("Who would you like to change?");
+			String name = scan.next(); 
 			System.out.println("What would you like to change?");
 			System.out.println("1. Name");
 			System.out.println("2. Birthday");
