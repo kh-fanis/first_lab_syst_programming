@@ -6,17 +6,18 @@ public class Main {
 	public static Scanner scan;
 
 	public static void main(String[] args) {
-		contact = new Persons("Hi", "654689", new Date(1,  7, 1996));
+		/*contact = new Persons("Hi", "654689", new Date(1,  7, 1996));
 		contact.addPerson("Fanis", "79503264385", new Date(2,  7, 1996));
 		contact.addPerson("Lenar", "79503264388", new Date(10,  6, 1995));
 		contact.addPerson("Danis", "79503264389");
-		contact.addNamesNumber("Fanis", "79503264386");
+		contact.addNamesNumber("Fanis", "79503264386");*/
+		contact = new Persons();
 		scan = new Scanner(System.in);
 		while (true) {
 			menuCUI();
 			int input = scan.nextInt();
 			processEvent(input);
-			if(input == 9) break;
+			if(input == 9) { contact.close(); break; }
 		}
 	}
 
@@ -31,7 +32,7 @@ public class Main {
 	public static void processEvent(int input) {
 		if (input == 1) System.out.println(contact);
 		else if (input == 2) {
-			String name, number, month; int day, year;
+			String name, number, month; Integer day, year;
 			System.out.println("Enter Name: "); name = scan.next();
 			System.out.println("Enter Number: "); number = scan.next();
 			System.out.println("Enter Birthday's day: "); day = scan.nextInt();
@@ -41,11 +42,14 @@ public class Main {
 		}
 		else if (input == 3) {
 			System.out.println("Who would you like to change?");
+			for (int i = 0; i < contact.getSize(); i++)
+				System.out.println("\t* " + contact.getNameAt(i));
 			String name = scan.next(); 
 			System.out.println("What would you like to change?");
 			System.out.println("1. Name");
 			System.out.println("2. Birthday");
 			System.out.println("3. Number");
+			System.out.println("4.  << Back");
 			int variant = scan.nextInt();
 			if (variant == 1) {
 				System.out.println("On Whom?");
@@ -54,11 +58,12 @@ public class Main {
 			else if (variant == 2) {
 				System.out.println("In Which?");
 				System.out.println("Enter Birthday's day: ");
-				contact.getNamesBirthday(name).setDay(scan.nextInt());
+				int day = scan.nextInt();
 				System.out.println("Enter Birthday's month: ");
-				contact.getNamesBirthday(name).setMonth(scan.next());
+				String month = scan.next();
 				System.out.println("Enter Birthday's year: ");
-				contact.getNamesBirthday(name).setYear(scan.nextInt());
+				int year = scan.nextInt();
+				contact.setPersonsBirthday(name, day, month, year);
 			}
 			else if (variant == 3) {
 				System.out.println("1. Add Number");
@@ -89,9 +94,12 @@ public class Main {
 					contact.removeNumber(name, position);
 				}
 			}
+			else if (variant == 4) return;
 		}
 		else if (input == 4) {
-			System.out.println("Who would you like to change?"); String name = scan.next();
+			System.out.println("Who would you like to remove?");
+			for (int i = 0; i < contact.getSize(); i++)
+				System.out.println("\t* " + contact.getNameAt(i));String name = scan.next();
 			contact.removePerson(name);
 		}
 	}

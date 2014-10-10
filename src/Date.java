@@ -1,3 +1,4 @@
+
 public class Date {
 
 	private Integer day;
@@ -35,7 +36,7 @@ public class Date {
 		catch (NumberFormatException var) { return 0; }
 	}
 	public String getMonth(int month) {
-		if (month ==  1) return "Jan";
+			 if (month ==  1) return "Jan";
 		else if (month ==  2) return "Feb";
 		else if (month ==  3) return "Mar";
 		else if (month ==  4) return "Apr";
@@ -65,6 +66,9 @@ public class Date {
 	public Integer getMonth() {
 		return month;
 	}
+	public int getMonthint() {
+		return month;
+	}
 	public void setMonth(Integer month) {
 		if (month > 0 && month < 13) this.month = month;
 	}
@@ -79,9 +83,12 @@ public class Date {
 	}
 
 	public String toString() {
-		String d = day.toString();
+		String d, m, y;
+		if (day == null) d = "day not noted"; else d = day.toString();
+		if (month == null) m = "month not noted"; else m = getMonth(month);
+		if (year == null) y = "yearnot noted"; else y = year.toString();
 		if (day.equals(1)) d = "1st"; else if (day.equals(2)) d = "2nd";
 		else d += "th";
-		return d + " " + getMonth(month) + " " + year;
+		return d + " " + m + " " + y;
 	}
 }
